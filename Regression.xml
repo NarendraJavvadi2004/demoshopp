@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite" >
+  <parameter name="browser" value="chrome"/>
+  <listeners>
+    <listener class-name="com.demoshopp.pageutilities.Listenerr"/>
+  </listeners>
+  <test name="userflow">
+    <classes>
+      <class name="com.demoshopp.tests.HomePageTest"/>
+      <class name="com.demoshopp.tests.RegisterTest"/>
+      <class name="com.demoshopp.tests.LoginPageTest"/>
+      <class name="com.demoshopp.tests.CategoryPageTest"/>
+      <class name="com.demoshopp.tests.ProductListPageTest"/>
+      <class name="com.demoshopp.tests.ProductPageTest"/>
+      <class name="com.demoshopp.tests.CartPageTest"/>
+      <class name="com.demoshopp.tests.CheckoutPageTest"/>
+    </classes>
+  </test>
+</suite>

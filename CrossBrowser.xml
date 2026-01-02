@@ -1,0 +1,26 @@
+<suite name="OrderFlowSuite"  thread-count="3" parallel="tests">
+  <listeners>
+    <listener class-name="com.demoshopp.pageutilities.Listenerr"/>
+  </listeners>
+
+  <test name="ChromeFlow">
+    <parameter name="browser" value="chrome"/>
+    <classes>
+      <class name="com.demoshopp.tests.HomePageTest"/>
+    </classes>
+  </test>
+
+  <test name="FirefoxFlow">
+    <parameter name="browser" value="firefox"/>
+    <classes>
+      <class name="com.demoshopp.tests.HomePageTest"/>
+    </classes>
+  </test>
+
+  <test name="EdgeFlow">
+    <parameter name="browser" value="edge"/>
+    <classes>
+      <class name="com.demoshopp.tests.HomePageTest"/>
+    </classes>
+  </test>
+</suite>

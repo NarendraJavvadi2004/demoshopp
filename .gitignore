@@ -1,0 +1,17 @@
+# Maven
+/target/
+
+# TestNG
+/test-output/
+
+# Reports & screenshots
+/reports/
+/screenshots/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+/target/

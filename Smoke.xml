@@ -1,0 +1,34 @@
+<suite name="SmokeSuite" >
+
+    <listeners>
+        <listener class-name="com.demoshopp.pageutilities.Listenerr"/>
+    </listeners>
+
+    <test name="SmokeTest">
+     <parameter name="browser" value="chrome"/>
+        <groups>
+            <run>
+                <include name="Smoke"/>
+            </run>
+</groups>
+        <classes>
+            <class name="com.demoshopp.tests.LoginPageTest"/>
+            <class name="com.demoshopp.tests.CategoryPageTest"/>
+            <class name="com.demoshopp.tests.ProductListPageTest"/>
+        </classes>
+    </test>
+    <test name="SanityTest">
+     <parameter name="browser" value="chrome"/>
+        <groups>
+            <run>
+                <include name="Sanity"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.demoshopp.tests.LoginPageTest"/>
+            <class name="com.demoshopp.tests.RegisterTest"/>
+            <class name="com.demoshopp.tests.HomePageTest"/>
+        </classes>
+    </test>
+
+</suite>
