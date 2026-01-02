@@ -16,7 +16,7 @@ public class Basepage {
     public void setUp(@Optional("chrome") String browser) {
         System.out.println("🔧 [Basepage] Setting up driver for: " + browser);
 
-        // ✅ Skip Edge in Jenkins to avoid headless crash
+        // ✅ Skip Edge in Jenkinss to avoid headless crash
         if ((browser.equalsIgnoreCase("edge") || browser.equalsIgnoreCase("firefox"))
                 && System.getenv("JENKINS_HOME") != null) {
             throw new SkipException("🚫 Skipping " + browser + " in Jenkins due to headless crash issue");
