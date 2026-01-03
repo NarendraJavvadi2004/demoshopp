@@ -1,9 +1,6 @@
-name: DemoShop CI
-
-on:
-  push:
-    branches: 
-      - master   # auto-trigger when pushing to master
+push:
+  branches:
+    - master   # auto-trigger when pushing to master
 
 jobs:
   build:
@@ -26,7 +23,7 @@ jobs:
         run: mvn test -DsuiteXmlFile=testng.xml
 
       - name: Upload ExtentReport
-       uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4
         with:
           name: ExtentReport
           path: reports/*.html
