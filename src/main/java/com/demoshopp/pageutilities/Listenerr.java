@@ -10,19 +10,19 @@ public class Listenerr implements ITestListener {
 
     @Override
     public void onTestStart(ITestResult result) {
-    	System.out.println("test Started...");
+        System.out.println("test Started...");
         ExtentTestManager.startTest(result.getMethod().getMethodName());
     }
 
     @Override
     public void onTestSuccess(ITestResult result) {
-    	System.out.println("test Successfull...");
+        System.out.println("test Successfull...");
         ExtentTestManager.getTest().pass("* Test Passed *");
     }
 
     @Override
     public void onTestFailure(ITestResult result) {
-    	System.out.println("test Failed...");
+        System.out.println("test Failed...");
         ExtentTestManager.getTest().fail(result.getThrowable());
 
         String screenshotPath = Screenshots.captureScreenshot(
@@ -30,13 +30,16 @@ public class Listenerr implements ITestListener {
                 result.getMethod().getMethodName()
         );
 
-        ExtentTestManager.getTest().addScreenCaptureFromPath(screenshotPath);
-        
+        if (screenshotPath != null) {
+            ExtentTestManager.getTest().addScreenCaptureFromPath(screenshotPath);
+        } else {
+            System.out.println("⚠️ No screenshot captured because driver was null.");
+        }
     }
 
     @Override
     public void onTestSkipped(ITestResult result) {
-    	System.out.println("test Skipped...");
+        System.out.println("test Skipped...");
         ExtentTestManager.getTest().skip("* Test Skipped *");
     }
 

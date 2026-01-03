@@ -13,6 +13,11 @@ import org.apache.commons.io.FileUtils;
 public class Screenshots {
 
     public static String captureScreenshot(WebDriver driver, String testName) {
+        if (driver == null) {
+            System.out.println("⚠️ Screenshot skipped: WebDriver is null for test " + testName);
+            return null;
+        }
+
         String dateName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
         File source = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 
