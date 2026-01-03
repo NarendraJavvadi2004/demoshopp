@@ -19,14 +19,31 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
+      # Install Chrome
+      - name: Install Chrome
+        run: sudo apt-get update && sudo apt-get install -y google-chrome-stable
+
+      # Install Firefox
+      - name: Install Firefox
+        run: sudo apt-get install -y firefox
+
+      # Install Microsoft Edge
+      - name: Install Microsoft Edge
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y software-properties-common
+          sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main"
+          sudo apt-get update
+          sudo apt-get install -y microsoft-edge-stable
+
       - name: Build with Maven
-        run: mvn clean install   # run full build with tests
+        run: mvn clean install   # full build with tests
 
       - name: Run tests
-        run: mvn test   # Surefire plugin in pom.xml already points to Regression.xml
+        run: mvn test   # Surefire plugin in pom.xml points to Regression.xml, CrossBrowser.xml, etc.
 
       - name: Upload ExtentReport
         uses: actions/upload-artifact@v4
         with:
           name: ExtentReport
-          path: reports/ExtentReports_*.html   # upload timestamped reports from root reports folder
+          path: reports/ExtentReports_*.html   # upload all timestamped reports from root reports folder
