@@ -40,7 +40,7 @@ jobs:
         run: mvn clean install -DskipTests   # build only, skip tests here
 
       - name: Run Regression suite
-        run: mvn test -DsuiteXmlFile=Regression.xml   # explicitly run Regression.xml
+        run: mvn test   # Surefire plugin in pom.xml points to Regression.xml
 
       - name: Upload ExtentReport
         uses: actions/upload-artifact@v4
