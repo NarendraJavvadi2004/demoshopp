@@ -1,6 +1,6 @@
-
 package com.demoshopp.pageutilities;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -17,13 +17,17 @@ public class ExtentManager {
         }
         return extent;
     }
-  
 
     // Create and configure ExtentReports instance
     private static ExtentReports createInstance() {
-    	String timeStamp =  new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-    	String reportPath = System.getProperty("user.dir") + "/reports/ExtentReport_" + timeStamp + ".html";
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
 
+        // ✅ Step 1: Make sure reports folder exists
+        String reportFolder = System.getProperty("user.dir") + "/reports";
+        new File(reportFolder).mkdirs();  // creates folder if missing
+
+        // ✅ Step 2: Save report inside that folder
+        String reportPath = reportFolder + "/ExtentReport_" + timeStamp + ".html";
 
         ExtentSparkReporter spark = new ExtentSparkReporter(reportPath);
         spark.config().setDocumentTitle("DemoShop Automation Report");
