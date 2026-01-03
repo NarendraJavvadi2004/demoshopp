@@ -45,14 +45,20 @@ git clone https://github.com/NarendraJavvadi/DemoShopp.git
 - Maven:
 mvn clean test
 
-
-📦 CI/CD Ready
-- Framework is structured for Jenkins integration.
-- Supports command-line execution via Maven.
-- Easily extendable for GitHub Actions or other CI tools.
-📸 Sample Screenshot on Failure
-Screenshots are auto-captured and stored in /screenshots with timestamped filenames.
-📈 Reporting
-- TestNG default reports
-🙌 Author
+📦 CI/CD Integration ⚙️
+- 🔄 GitHub Actions pipeline auto-triggers on push to master
+- ☕ Installs JDK and browsers (🌐 Chrome, 🦊 Firefox, 🪟 Edge)
+- 🛠️ Builds with Maven and runs regression suite
+- 📤 Uploads ExtentReport HTML as artifact
+- 📂 Artifact available under Actions → Workflow Run → Artifacts
+- 🔧 Framework also structured for Jenkins integration and supports command-line execution via Maven
+📸 Screenshot on Failure 🖼️
+- 📷 Screenshots auto-captured on test failure
+- 🗂️ Stored in /screenshots with timestamped filenames
+📈 Reporting 📊
+- 📝 ExtentReports with detailed HTML output
+- ✅ Includes test steps, status, screenshots, and environment info
+- 📂 Reports saved in /reports folder (auto-created at runtime)
+  
+🙌 Author ✨
 Narendra — QA Automation Enthusiast  Java + Selenium  Building real-world frameworks with ❤️
