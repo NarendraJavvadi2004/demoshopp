@@ -37,7 +37,7 @@ DemoShopFramework/
 
 🧪 How to Run
 - Clone the repo:
-git clone https://github.com/your-username/DemoShopFramework.git
+git clone https://github.com/NarendraJavvadi/DemoShopp.git
 - Import into Eclipse/IntelliJ as a Maven project.
 - Update config.properties with your browser and URL.
 - Run via:
