@@ -42,8 +42,12 @@ jobs:
       - name: Run Regression suite
         run: mvn test   # Surefire plugin in pom.xml points to Regression.xml
 
+      # Debug: list reports folder to confirm file name
+      - name: List reports folder
+        run: ls -R reports || echo "No reports folder found"
+
       - name: Upload ExtentReport
         uses: actions/upload-artifact@v4
         with:
           name: ExtentReport
-          path: reports/ExtentReports_*.html   # upload all timestamped reports
+          path: reports/ExtentReport_*.html   # ✅ matches your Java code
