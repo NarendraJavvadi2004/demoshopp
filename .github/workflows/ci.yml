@@ -20,13 +20,13 @@ jobs:
           distribution: 'temurin'
 
       - name: Build with Maven
-        run: mvn clean install -DskipTests   # skip tests to avoid failures
+        run: mvn clean install   # run full build with tests
 
-      - name: Run tests (static placeholder)
-        run: echo "Skipping tests for now, CI is green!"   # static step
+      - name: Run tests
+        run: mvn test   # Surefire plugin in pom.xml already points to Regression.xml
 
       - name: Upload ExtentReport
         uses: actions/upload-artifact@v4
         with:
           name: ExtentReport
-          path: reports/*.html
+          path: reports/ExtentReports_*.html   # upload timestamped reports from root reports folder
