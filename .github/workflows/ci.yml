@@ -1,6 +1,9 @@
-push:
-  branches:
-    - master   # auto-trigger when pushing to master
+name: DemoShop CI
+
+on:
+  push:
+    branches:
+      - master   # auto-trigger when pushing to master
 
 jobs:
   build:
