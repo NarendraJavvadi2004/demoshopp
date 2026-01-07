@@ -14,10 +14,10 @@ public class HomePage {
     private WaitUtils waitUtils;
 
     // ---- LOCATORS USING PAGEFACTORY ----
-    @FindBy(xpath = "//a[text()='Log in']")
+    @FindBy(xpath = "//a[normalize-space()='Log in']")
     private WebElement loginLink;
 
-    @FindBy(xpath = "//a[text()='Register']")
+    @FindBy(xpath = "//a[normalize-space()='Register']")
     private WebElement registerLink;
 
     @FindBy(linkText = "Log out")
@@ -26,13 +26,13 @@ public class HomePage {
     @FindBy(linkText = "My account")
     private WebElement myAccountLink;
 
-    @FindBy(xpath = "//span[text()='Shopping cart']")
+    @FindBy(xpath = "//span[normalize-space()='Shopping cart']")
     private WebElement cartLink;
 
     @FindBy(xpath = "//span[text()='Wishlist']")
     private WebElement wishlistLink;
 
-    @FindBy(css = "ul.top-menu > li > a")
+    @FindBy(css = "ul.list li.inactive a")
     private List<WebElement> categoryLinks;
 
     // ---- CONSTRUCTOR ----
@@ -66,17 +66,9 @@ public class HomePage {
         waitUtils.clickElement(wishlistLink);
     }
 
-    // ---- VALIDATION METHODS ----
-    public void clickCategory(String categoryName) {
-        for (WebElement element : categoryLinks) {
-            if (waitUtils.getElementText(element).equalsIgnoreCase(categoryName)) {
-                element.click(); // already visible from getElementText wait
-                return;
-            }
-        }
-        throw new RuntimeException("Category not found: " + categoryName);
-    }
-
+    // ---- VALIDATION METHODS ---// 
+  
+   
     public boolean isUserLoggedIn() {
         return waitUtils.waitForElementVisible(logoutLink).isDisplayed();
     }

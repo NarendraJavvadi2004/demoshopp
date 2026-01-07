@@ -25,4 +25,5 @@ public class CategoryPageTest extends Basepage {
         // Step 4: Verify product list page is loaded (next step in your flow)
         Assert.assertTrue(DriverManager.getDriver().getCurrentUrl().contains("desktops"), "Not navigated to Desktops page");
     }
-}
+ 
+  }

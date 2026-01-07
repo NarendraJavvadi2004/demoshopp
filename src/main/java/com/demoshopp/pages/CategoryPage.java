@@ -5,8 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import com.demoshopp.pageutilities.WaitUtils;
 
@@ -15,7 +15,7 @@ public class CategoryPage {
     private WaitUtils waitUtils;
 
     // ---- LOCATORS USING PAGEFACTORY ----
-    @FindBy(css = "ul.top-menu > li > a")  
+    @FindBy(css = "ul.top-menu > li > a")
     private List<WebElement> categoryLinks;
 
     @FindBy(css = ".sub-category-item")
@@ -24,12 +24,14 @@ public class CategoryPage {
     // ---- CONSTRUCTOR ----
     public CategoryPage(WebDriver driver) {
         this.waitUtils = new WaitUtils(driver);
-        PageFactory.initElements(driver, this); // initialize all @FindBy elements
+        PageFactory.initElements(driver, this);
     }
 
     // ---- ACTION METHODS ----
     public void clickCategory(String categoryName) {
-        for (WebElement category : waitUtils.waitForAllVisible(categoryLinks)) {
+        List<WebElement> categories = waitUtils.waitForAllVisible(categoryLinks);
+
+        for (WebElement category : categories) {
             if (category.getText().equalsIgnoreCase(categoryName)) {
                 waitUtils.clickElement(category);
                 return;
@@ -39,14 +41,19 @@ public class CategoryPage {
     }
 
     public List<String> getSubCategoryNames() {
-        return waitUtils.waitForAllVisible(subCategoryItems)
-                        .stream()
-                        .map(WebElement::getText)
-                        .collect(Collectors.toList());
+        List<String> subCategoryNames = new ArrayList<>();
+        List<WebElement> subCategories = waitUtils.waitForAllVisible(subCategoryItems);
+
+        for (WebElement subCategory : subCategories) {
+            subCategoryNames.add(subCategory.getText());
+        }
+        return subCategoryNames;
     }
 
     public void clickSubCategory(String subCategoryName) {
-        for (WebElement subCategory : waitUtils.waitForAllVisible(subCategoryItems)) {
+        List<WebElement> subCategories = waitUtils.waitForAllVisible(subCategoryItems);
+
+        for (WebElement subCategory : subCategories) {
             if (subCategory.getText().equalsIgnoreCase(subCategoryName)) {
                 waitUtils.clickElement(subCategory);
                 return;

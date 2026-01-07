@@ -34,7 +34,7 @@ public class RegisterPage {
     @FindBy(id = "register-button")
     private WebElement registerButton;
 
-    @FindBy(xpath = "//div[@class='result']")
+    @FindBy(xpath = "//div[normalize-space()='Your registration completed']")
     private WebElement successMessage;
 
     // 🔹 Constructor

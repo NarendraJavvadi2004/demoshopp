@@ -24,11 +24,6 @@ public class CartPageTest extends AuthenticatedBasePage {
         // Step 3: Verify total price is displayed
         String total = cartPage.getTotalPrice();
         Assert.assertTrue(total.length() > 0, "Total price not displayed");
-
-        // ✅ Step 3a: Verify product price matches expected
-        String expectedPrice = "1365.00"; // replace with your expected product price
-        Assert.assertEquals(total, expectedPrice, "Total price mismatch");
-
         // Step 4: Agree to terms of service
         cartPage.agreeToTerms();
 

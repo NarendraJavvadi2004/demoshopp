@@ -24,28 +24,21 @@ public class HomePageTest extends Basepage {
         home.clickLogin();
         Assert.assertTrue(DriverManager.getDriver().getCurrentUrl().contains("login"), "Login page URL mismatch!");
 
-        // Go back to Home
-        DriverManager.getDriver().navigate().back();
 
         // Click Register link to check navigation works
         home.clickRegister();
         Assert.assertTrue(DriverManager.getDriver().getCurrentUrl().contains("register"), "Register page URL mismatch!");
 
-        // Navigate back to Home again
-        DriverManager.getDriver().navigate().back();
-
         // Check Cart navigation
         home.openCart();
         Assert.assertTrue(DriverManager.getDriver().getCurrentUrl().contains("cart"), "Cart page URL mismatch!");
 
-        // Navigate back
-        DriverManager.getDriver().navigate().back();
+    
 
         // Wishlist navigation
         home.openWishlist();
         Assert.assertTrue(DriverManager.getDriver().getCurrentUrl().contains("wishlist"), "Wishlist page URL mismatch!");
 
-        // Navigate back
-        DriverManager.getDriver().navigate().back();
+      
     }
 }
