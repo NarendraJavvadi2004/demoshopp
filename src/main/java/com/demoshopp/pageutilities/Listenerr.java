@@ -33,7 +33,7 @@ public class Listenerr implements ITestListener {
         if (screenshotPath != null) {
             ExtentTestManager.getTest().addScreenCaptureFromPath(screenshotPath);
         } else {
-            System.out.println("⚠️ No screenshot captured because driver was null.");
+            System.out.println("No screenshot captured because driver was null.");
         }
     }
 

@@ -13,9 +13,9 @@ public class Basepage {
     @BeforeMethod(alwaysRun = true)
     @Parameters("browser")
     public void setUp(@Optional("chrome") String browser) {
-        System.out.println(" [Basepage] Setting up driver for: " + browser);
+        System.out.println("  Setting up driver for: " + browser);
         DriverManager.initDriver(browser);
-        System.out.println(" [Basepage] Driver initialized: " + DriverManager.getDriver());
+        System.out.println("  Driver initialized: " + DriverManager.getDriver());
         DriverManager.getDriver().get(ConfigReader.getProperty("url"));
         waitUtils = new WaitUtils(DriverManager.getDriver());
     }

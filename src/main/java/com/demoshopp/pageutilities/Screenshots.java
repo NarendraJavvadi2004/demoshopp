@@ -14,7 +14,7 @@ public class Screenshots {
 
     public static String captureScreenshot(WebDriver driver, String testName) {
         if (driver == null) {
-            System.out.println("⚠️ Screenshot skipped: WebDriver is null for test " + testName);
+            System.out.println(" Screenshot skipped: WebDriver is null for test " + testName);
             return null;
         }
 
