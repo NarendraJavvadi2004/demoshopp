@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<suite name="Suite">
+ <listeners>
+    <listener class-name="uiApi.utilities.Listenerr"/>
+  </listeners>
+  <test  name="Test">
+    <classes>
+      <class name="api.tests.CartApiTest"/>
+      <class name="api.tests.ProductApiTest"/>
+      <class name="api.tests.AuthApiTest"/>
+      <class name="api.tests.UserApiTest"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

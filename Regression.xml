@@ -5,7 +5,7 @@
     <listener class-name="uiApi.utilities.Listenerr"/>
   </listeners>
   <test name="userflow">
-    <classes>
+    <classes>>
       <class name="ui.tests.HomePageTest"/>
        <class name="ui.tests.RegisterTest"/>
       <class name="ui.tests.LoginPageTest"/> 
@@ -15,13 +15,5 @@
       <class name="ui.tests.CartPageTest"/>
       <class name="ui.tests.CheckoutPageTest"/>
     </classes>
-  </test>
-  <test  name="ApiRegression">
-    <classes>
-      <class name="api.tests.CartApiTest"/>
-      <class name="api.tests.ProductApiTest"/>
-      <class name="api.tests.AuthApiTest"/>
-      <class name="api.tests.UserApiTest"/>
-    </classes>
-  </test>
+</test>
 </suite>
