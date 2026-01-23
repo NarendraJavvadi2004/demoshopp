@@ -3,7 +3,7 @@ name: DemoShop CI
 on:
   push:
     branches:
-      - master   # auto-trigger when pushing to master
+      - master
 
 jobs:
   build:
@@ -19,25 +19,18 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
-      # Install Chrome
       - name: Install Chrome
         run: sudo apt-get update && sudo apt-get install -y google-chrome-stable
 
-      # Install Firefox + dependencies
       - name: Install Firefox
-        run: |
-          sudo apt-get install -y firefox
-          sudo apt-get install -y libgtk-3-0 libdbus-glib-1-2 libasound2
+        run: sudo apt-get install -y firefox
 
-      # Build with Maven (skip tests here)
       - name: Build with Maven
         run: mvn clean install -DskipTests
 
-      # Run Regression suite (Surefire plugin points to Regression.xml)
       - name: Run Regression suite
         run: mvn test
 
-      # Debug: list reports folder to confirm file name
       - name: List reports folder
         run: ls -R reports || echo "No reports folder found"
 
