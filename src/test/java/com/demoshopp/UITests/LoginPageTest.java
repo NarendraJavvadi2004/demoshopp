@@ -1,4 +1,4 @@
-package com.demoshopp.tests;
+package com.demoshopp.UITests;
 import com.demoshopp.pageutilities.RetryAnalyzer;
 
 import org.testng.Assert;

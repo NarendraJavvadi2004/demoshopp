@@ -1,4 +1,4 @@
-package com.demoshopp.tests;
+package com.demoshopp.UITests;
 
 import org.testng.annotations.DataProvider;
 

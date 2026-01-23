@@ -1,5 +1,5 @@
 
-package com.demoshopp.tests;
+package com.demoshopp.UITests;
 
 import com.demoshopp.base.Basepage;
 import com.demoshopp.base.DriverManager;
