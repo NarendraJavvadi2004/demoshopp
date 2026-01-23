@@ -1,26 +1,43 @@
-<suite name="OrderFlowSuite"  thread-count="3" parallel="tests">
+<suite name="OrderFlowSuite" thread-count="3" parallel="tests">
+
   <listeners>
-    <listener class-name="com.demoshopp.pageutilities.Listenerr"/>
+    <listener class-name="uiApi.utilities.Listenerr"/>
   </listeners>
 
   <test name="ChromeFlow">
     <parameter name="browser" value="chrome"/>
     <classes>
-      <class name="com.demoshopp.tests.HomePageTest"/>
+      <class name="ui.tests.HomePageTest"/>
+        <class name="ui.tests.CategoryPageTest"/>
+         <class name="ui.tests.RegisterTest"/>
+      <class name="ui.tests.LoginPageTest"/> 
+      <class name="ui.tests.ProductListPageTest"/>
+      <class name="ui.tests.ProductPageTest"/>
     </classes>
   </test>
 
   <test name="FirefoxFlow">
     <parameter name="browser" value="firefox"/>
     <classes>
-      <class name="com.demoshopp.tests.HomePageTest"/>
+      <class name="ui.tests.HomePageTest"/>
+       <class name="ui.tests.RegisterTest"/>
+      <class name="ui.tests.LoginPageTest"/> 
+        <class name="ui.tests.CategoryPageTest"/>
+      <class name="ui.tests.ProductListPageTest"/>
+      <class name="ui.tests.ProductPageTest"/>
     </classes>
   </test>
 
   <test name="EdgeFlow">
     <parameter name="browser" value="edge"/>
     <classes>
-      <class name="com.demoshopp.tests.HomePageTest"/>
+      <class name="ui.tests.HomePageTest"/> 
+       <class name="ui.tests.RegisterTest"/>
+      <class name="ui.tests.LoginPageTest"/> 
+        <class name="ui.tests.CategoryPageTest"/>
+      <class name="ui.tests.ProductListPageTest"/>
+      <class name="ui.tests.ProductPageTest"/>
     </classes>
   </test>
+
 </suite>

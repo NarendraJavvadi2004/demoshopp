@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="SmokeSanitySuite">
+
+    <listeners>
+        <listener class-name="uiApi.utilities.Listenerr"/>
+    </listeners>
+
+    <test name="SmokeTests">
+        <parameter name="browser" value="chrome"/>
+        <groups>
+            <run>
+                <include name="Smoke"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="ui.tests.LoginPageTest"/>
+            <class name="ui.tests.CategoryPageTest"/>
+            <class name="ui.tests.ProductListPageTest"/>
+        </classes>
+    </test>
+
+    <test name="SanityTests">
+        <parameter name="browser" value="chrome"/>
+        <groups>
+            <run>
+                <include name="Sanity"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="ui.tests.LoginPageTest"/>
+            <class name="ui.tests.RegisterTest"/>
+            <class name="ui.tests.HomePageTest"/>
+        </classes>
+    </test>
+
+</suite>
