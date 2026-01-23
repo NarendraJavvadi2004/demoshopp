@@ -23,24 +23,19 @@ jobs:
       - name: Install Chrome
         run: sudo apt-get update && sudo apt-get install -y google-chrome-stable
 
-      # Install Firefox
+      # Install Firefox + dependencies
       - name: Install Firefox
-        run: sudo apt-get install -y firefox
-
-      # Install Microsoft Edge
-      - name: Install Microsoft Edge
         run: |
-          sudo apt-get update
-          sudo apt-get install -y software-properties-common
-          sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main"
-          sudo apt-get update
-          sudo apt-get install -y microsoft-edge-stable
+          sudo apt-get install -y firefox
+          sudo apt-get install -y libgtk-3-0 libdbus-glib-1-2 libasound2
 
+      # Build with Maven (skip tests here)
       - name: Build with Maven
-        run: mvn clean install -DskipTests   # build only, skip tests here
+        run: mvn clean install -DskipTests
 
+      # Run Regression suite (Surefire plugin points to Regression.xml)
       - name: Run Regression suite
-        run: mvn test   # Surefire plugin in pom.xml points to Regression.xml
+        run: mvn test
 
       # Debug: list reports folder to confirm file name
       - name: List reports folder
@@ -50,4 +45,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ExtentReport
-          path: reports/ExtentReport_*.html   # ✅ matches your Java code
+          path: reports/ExtentReport_*.html

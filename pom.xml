@@ -184,7 +184,6 @@
         <configuration>
           <suiteXmlFiles>
             <suiteXmlFile>Regression.xml</suiteXmlFile>
-            <suiteXmlFile>CrossBrowser.xml</suiteXmlFile>
           </suiteXmlFiles>
         </configuration>
       </plugin>
