@@ -17,7 +17,7 @@ public class AuthenticatedBasePage extends Basepage {
         if (home.isUserLoggedOut()) {
             home.clickLogin();
             // Use fixed credentials for flow tests
-            loginPage.login(ConfigReader.getProperty("username"), ConfigReader.getProperty("password"));
+            loginPage.login(ConfigReader.getProperty("ui.username"), ConfigReader.getProperty("ui.password"));
         }
     }
 }

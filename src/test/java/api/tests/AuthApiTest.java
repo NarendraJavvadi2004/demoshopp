@@ -16,8 +16,8 @@ public class AuthApiTest {
     @Test(retryAnalyzer=RetryAnalyzer.class)
     public void loginSuccess() {
         AuthPayload payload = new AuthPayload();
-        payload.setUsername(ConfigReader.getProperty("ApiUsername"));
-        payload.setPassword(ConfigReader.getProperty("ApiPassword"));
+        payload.setUsername(ConfigReader.getProperty("api.username"));
+        payload.setPassword(ConfigReader.getProperty("api.password"));
 
         Response res = AuthClient.login(payload);
         res.then().log().all();

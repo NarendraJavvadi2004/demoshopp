@@ -16,7 +16,7 @@ public class Basepage {
         System.out.println("  Setting up driver for: " + browser);
         DriverManager.initDriver(browser);
         System.out.println("  Driver initialized: " + DriverManager.getDriver());
-        DriverManager.getDriver().get(ConfigReader.getProperty("url"));
+        DriverManager.getDriver().get(ConfigReader.getProperty("ui.url"));
         waitUtils = new WaitUtils(DriverManager.getDriver());
     }
 
