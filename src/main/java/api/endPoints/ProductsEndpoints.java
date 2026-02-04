@@ -3,7 +3,7 @@ package api.endPoints;
 import uiApi.utilities.ConfigReader;
 
 public class ProductsEndpoints {
-    public static String baseUrl = ConfigReader.getProperty("baseUrl");
+    public static String baseUrl = ConfigReader.getProperty("api.baseUrl");
 
     // CRUD Endpoints
     public static String getAll   = baseUrl + "/products";

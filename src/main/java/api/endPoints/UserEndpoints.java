@@ -4,7 +4,7 @@ import uiApi.utilities.ConfigReader;
 
 public class UserEndpoints {
 
-	public static String baseUrl= ConfigReader.getProperty("baseUrl");
+	public static String baseUrl= ConfigReader.getProperty("api.baseUrl");
 	//User module
 	public static  String getUrlById =baseUrl+"/users/{id}";
 	public static  String postUrl =baseUrl+"/users";

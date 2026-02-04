@@ -5,24 +5,28 @@ import org.testng.ITestListener;
 import org.testng.ITestResult;
 
 import ui.base.DriverManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Listenerr implements ITestListener {
 
+    private static final Logger logger = LogManager.getLogger(Listenerr.class);
+
     @Override
     public void onTestStart(ITestResult result) {
-        System.out.println("test Started...");
+        logger.info("Test Started: {}", result.getMethod().getMethodName());
         ExtentTestManager.startTest(result.getMethod().getMethodName());
     }
 
     @Override
     public void onTestSuccess(ITestResult result) {
-        System.out.println("test Successfull...");
+        logger.info("Test Passed: {}", result.getMethod().getMethodName());
         ExtentTestManager.getTest().pass("* Test Passed *");
     }
 
     @Override
     public void onTestFailure(ITestResult result) {
-        System.out.println("test Failed...");
+        logger.error("Test Failed: {}", result.getMethod().getMethodName(), result.getThrowable());
         ExtentTestManager.getTest().fail(result.getThrowable());
 
         String screenshotPath = Screenshots.captureScreenshot(
@@ -31,21 +35,22 @@ public class Listenerr implements ITestListener {
         );
 
         if (screenshotPath != null) {
+            logger.info("Screenshot captured at: {}", screenshotPath);
             ExtentTestManager.getTest().addScreenCaptureFromPath(screenshotPath);
         } else {
-            System.out.println("No screenshot captured because driver was null.");
+            logger.warn("No screenshot captured because driver was null.");
         }
     }
 
     @Override
     public void onTestSkipped(ITestResult result) {
-        System.out.println("test Skipped...");
+        logger.warn("Test Skipped: {}", result.getMethod().getMethodName());
         ExtentTestManager.getTest().skip("* Test Skipped *");
     }
 
     @Override
     public void onFinish(ITestContext context) {
-        System.out.println("Flushing Extent Report...");
+        logger.info("Flushing Extent Report for suite: {}", context.getName());
         ExtentManager.getInstance().flush();
     }
 }

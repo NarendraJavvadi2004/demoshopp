@@ -8,11 +8,14 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 import uiApi.utilities.WaitUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class CheckoutPage {
 
     // ✅ immutable once set
-    private final WaitUtils waitUtils;  // ✅ immutable once set
+    private final WaitUtils waitUtils;
+    private static final Logger logger = LogManager.getLogger(CheckoutPage.class);
 
     // ------------------- Step 1: Billing Address -------------------
     @FindBy(id = "BillingNewAddress_FirstName")
@@ -81,12 +84,14 @@ public class CheckoutPage {
     public CheckoutPage(WebDriver driver) {
         this.waitUtils = new WaitUtils(driver);
         PageFactory.initElements(driver, this);
+        logger.info("CheckoutPage initialized with driver: {}", driver);
     }
 
     // ------------------- Actions -------------------
 
     /** Select “New Address” option in billing dropdown */
     public void selectNewAddress() {
+        logger.info("Selecting 'New Address' option in billing dropdown");
         Select select = new Select(waitUtils.waitForElementVisible(addressDropdown));
         select.selectByVisibleText("New Address");
     }
@@ -96,12 +101,13 @@ public class CheckoutPage {
                                    String country, String city,
                                    String addr1, String addr2,
                                    String zip, String phone) {
-
+        logger.info("Filling billing address for user: {} {}", fName, lName);
         waitUtils.clearAndEnterText(billingFirstName, fName);
         waitUtils.clearAndEnterText(billingLastName, lName);
         waitUtils.clearAndEnterText(billingEmail, email);
 
         new Select(billingCountry).selectByVisibleText(country);
+        logger.info("Selected billing country: {}", country);
 
         waitUtils.clearAndEnterText(billingCity, city);
         waitUtils.clearAndEnterText(billingAddress1, addr1);
@@ -111,57 +117,68 @@ public class CheckoutPage {
     }
 
     public void continueBilling() {
+        logger.info("Continuing from Billing step");
         waitUtils.clickElement(billingContinueBtn);
     }
 
     public void continueShippingAddress() {
+        logger.info("Continuing from Shipping Address step");
         waitUtils.clickElement(shippingContinueBtn);
     }
 
     /** Select shipping method by value attribute */
     public void selectShippingMethod(String value) {
+        logger.info("Selecting shipping method: {}", value);
         for (WebElement m : shippingMethodOptions) {
             if (m.getAttribute("value").equalsIgnoreCase(value)) {
                 m.click();
+                logger.info("Shipping method selected: {}", value);
                 break;
             }
         }
     }
 
     public void continueShippingMethod() {
+        logger.info("Continuing from Shipping Method step");
         waitUtils.clickElement(shippingMethodContinueBtn);
     }
 
     /** Select payment method by value attribute */
     public void selectPaymentMethod(String value) {
+        logger.info("Selecting payment method: {}", value);
         for (WebElement p : paymentMethodOptions) {
             if (p.getAttribute("value").equalsIgnoreCase(value)) {
                 p.click();
+                logger.info("Payment method selected: {}", value);
                 break;
             }
         }
     }
 
     public void continuePaymentMethod() {
+        logger.info("Continuing from Payment Method step");
         waitUtils.clickElement(paymentMethodContinueBtn);
     }
 
     public void continuePaymentInfo() {
+        logger.info("Continuing from Payment Info step");
         waitUtils.clickElement(paymentInfoContinueBtn);
     }
 
     public void confirmOrder() {
+        logger.info("Confirming order");
         waitUtils.clickElement(confirmOrderBtn);
     }
 
     /** Verify if order confirmation message is displayed */
     public boolean isOrderConfirmed() {
         try {
-            return waitUtils.waitForElementVisible(orderConfirmationMessage).isDisplayed();
+            boolean confirmed = waitUtils.waitForElementVisible(orderConfirmationMessage).isDisplayed();
+            logger.info("Order confirmation status: {}", confirmed);
+            return confirmed;
         } catch (Exception e) {
+            logger.error("Failed to verify order confirmation", e);
             return false;
         }
     }
-
-	
 }
