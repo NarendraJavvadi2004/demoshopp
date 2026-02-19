@@ -4,14 +4,16 @@
 # TestNG
 /test-output/
 
-# Reports & screenshots
+# Reports & Screenshots
 /reports/
 /screenshots/
 
 # Logs
 *.log
 
+# Excel temporary files
+~$*
+
 # OS files
 .DS_Store
 Thumbs.db
-/target/
