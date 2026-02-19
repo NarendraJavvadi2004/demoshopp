@@ -1,5 +1,6 @@
 package ui.pages;
 
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -29,6 +30,9 @@ public class LoginPage {
     
     @FindBy(xpath = "//a[text()='Log out']")
     private WebElement logoutLink;
+    
+    @FindBy(xpath = "//div[@class='validation-summary-errors']/span[starts-with(normalize-space(),'Login was unsuccessful')]")
+    private WebElement failedLogIn;
     
     // Constructor
     public LoginPage(WebDriver driver) {
@@ -73,4 +77,16 @@ public class LoginPage {
         logger.info("Logged in user email displayed: {}", email);
         return email;
     }
+    
+   public boolean IsLoginFailed() {
+	   try {
+	 waitUtils.waitForElementVisible(failedLogIn);
+	return true;
+	   }catch(TimeoutException  e) {
+		   return false;
+	   }
+   }
+    
+    
+    
 }

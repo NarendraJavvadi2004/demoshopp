@@ -16,4 +16,8 @@ public class DataP {
     public Object[][] getUserAPiData() {
         return ExcelUtil.getSheetData("TestData.xlsx", "UserAPi");
     }
+    @DataProvider(name = "InvalidLogin")
+    public Object[][] getInvalidCredentials() {
+        return ExcelUtil.getSheetData("TestData.xlsx", "InvalidLoginSheet");
+    }
 }
