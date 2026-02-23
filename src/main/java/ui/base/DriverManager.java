@@ -24,6 +24,7 @@ public class DriverManager {
     }
 
     public static void initDriver(String browser) {
+
         WebDriver webDriver;
         BrowserType browserType;
 
@@ -34,26 +35,51 @@ public class DriverManager {
         }
 
         switch (browserType) {
+
             case CHROME:
                 WebDriverManager.chromedriver().setup();
+
                 ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.addArguments("--headless=new", "--disable-gpu", "--window-size=1920,1080");
+
+                // 🔥 SSL Handling
+                chromeOptions.setAcceptInsecureCerts(true);
+                chromeOptions.addArguments("--ignore-certificate-errors");
+                chromeOptions.addArguments("--allow-insecure-localhost");
+
+                // Headless Support
+                chromeOptions.addArguments("--headless=new");
+                chromeOptions.addArguments("--disable-gpu");
+                chromeOptions.addArguments("--window-size=1920,1080");
+
                 webDriver = new ChromeDriver(chromeOptions);
                 break;
 
+
             case FIREFOX:
                 WebDriverManager.firefoxdriver().setup();
+
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
-                firefoxOptions.addArguments("--headless", "--disable-gpu", "--window-size=1920,1080");
+                firefoxOptions.setAcceptInsecureCerts(true);
+                firefoxOptions.addArguments("--headless");
+                firefoxOptions.addArguments("--width=1920");
+                firefoxOptions.addArguments("--height=1080");
+
                 webDriver = new FirefoxDriver(firefoxOptions);
                 break;
 
+
             case EDGE:
                 WebDriverManager.edgedriver().setup();
+
                 EdgeOptions edgeOptions = new EdgeOptions();
-                edgeOptions.addArguments("--headless", "--disable-gpu", "--window-size=1920,1080");
+                edgeOptions.setAcceptInsecureCerts(true);
+                edgeOptions.addArguments("--headless=new");
+                edgeOptions.addArguments("--disable-gpu");
+                edgeOptions.addArguments("--window-size=1920,1080");
+
                 webDriver = new EdgeDriver(edgeOptions);
                 break;
+
 
             default:
                 throw new IllegalStateException("Unexpected browser: " + browserType);
