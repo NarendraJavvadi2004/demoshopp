@@ -1,0 +1,40 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Run TestNG Suite",
+            "request": "launch",
+            "mainClass": "org.testng.TestNG",
+            "args": [
+                "${workspaceFolder}/testng.xml"
+            ],
+            "projectName": "demoshopp",
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "java",
+            "name": "Run LoginPageTest",
+            "request": "launch",
+            "mainClass": "org.testng.TestNG",
+            "args": [
+                "ui.tests.LoginPageTest"
+            ],
+            "projectName": "demoshopp",
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "java",
+            "name": "Run Maven Tests",
+            "request": "launch",
+            "mainClass": "org.codehaus.plexus.classworlds.launcher.Launcher",
+            "args": [
+                "test"
+            ],
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "MAVEN_OPTS": "-Dmaven.multiModuleProjectDirectory=${workspaceFolder}"
+            }
+        }
+    ]
+}

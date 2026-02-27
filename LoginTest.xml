@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="LoginTestSuite">
+  <parameter name="browser" value="chrome"/>
+  <listeners>
+    <listener class-name="uiApi.utilities.Listenerr"/>
+  </listeners>
+  <test name="LoginTests">
+    <classes>
+      <class name="ui.tests.LoginPageTest"/>
+    </classes>
+  </test>
+</suite>
