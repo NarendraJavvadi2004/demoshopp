@@ -42,35 +42,21 @@ public class LoginPage {
     }
 
     // Actions
-    public void enterUsername(String username) {
-        logger.info("Entering username: {}", username);
-        waitUtils.enterText(usernameField, username);
-    }
-
-    public void enterPassword(String password) {
+    public void login(String user, String pass) {
+        logger.info("Attempting login with user: {}", user);
+        logger.info("Entering username: {}", user);
+        waitUtils.enterText(usernameField, user);
         logger.info("Entering password");
-        waitUtils.enterText(passwordField, password);
-    }
-
-    public void clickLogin() {
+        waitUtils.enterText(passwordField, pass);
         logger.info("Clicking Login button");
         waitUtils.clickElement(loginButton);
+        logger.info("Login submitted for user: {}", user);
     }
-    
+
     public void clickLogout() {
         logger.info("Clicking Logout link");
         waitUtils.clickElement(logoutLink);
     }
-
-    // Combined Method (reusable)
-    public void login(String user, String pass) {
-        logger.info("Attempting login with user: {}", user);
-        enterUsername(user);
-        enterPassword(pass);
-        clickLogin();
-        logger.info("Login submitted for user: {}", user);
-    }
-
     // Assertion helper
     public String getLoggedInUserEmail() {
         String email = waitUtils.getElementText(accountEmail);
