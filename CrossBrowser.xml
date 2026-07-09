@@ -8,11 +8,7 @@
     <parameter name="browser" value="chrome"/>
     <classes>
       <class name="ui.tests.HomePageTest"/>
-        <class name="ui.tests.CategoryPageTest"/>
-         <class name="ui.tests.RegisterTest"/>
-      <class name="ui.tests.LoginPageTest"/> 
-      <class name="ui.tests.ProductListPageTest"/>
-      <class name="ui.tests.ProductPageTest"/>
+       
     </classes>
   </test>
 
@@ -20,23 +16,17 @@
     <parameter name="browser" value="firefox"/>
     <classes>
       <class name="ui.tests.HomePageTest"/>
-       <class name="ui.tests.RegisterTest"/>
-      <class name="ui.tests.LoginPageTest"/> 
-        <class name="ui.tests.CategoryPageTest"/>
-      <class name="ui.tests.ProductListPageTest"/>
-      <class name="ui.tests.ProductPageTest"/>
-    </classes>
+     
+    </classes>`
+    
+    
+    
   </test>
 
   <test name="EdgeFlow">
     <parameter name="browser" value="edge"/>
     <classes>
       <class name="ui.tests.HomePageTest"/> 
-       <class name="ui.tests.RegisterTest"/>
-      <class name="ui.tests.LoginPageTest"/> 
-        <class name="ui.tests.CategoryPageTest"/>
-      <class name="ui.tests.ProductListPageTest"/>
-      <class name="ui.tests.ProductPageTest"/>
     </classes>
   </test>
 

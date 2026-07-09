@@ -22,6 +22,10 @@ public class HomePageTest extends Basepage {
         HomePage home = new HomePage(DriverManager.getDriver());
 
         // Initially user is logged out → login link should be visible
+        logger.info("Checking whether homepage photho loaded");
+        Assert.assertTrue(home.isHomepagephothoVisible(), "homepagepthodidnt loaded");
+        logger.info("HomepageLayoutisPresent");
+        
         logger.info("Checking if user is logged out");
         Assert.assertTrue(home.isUserLoggedOut(), "Login link should be visible for logged-out user");
         logger.info("Login link is visible for logged-out user");

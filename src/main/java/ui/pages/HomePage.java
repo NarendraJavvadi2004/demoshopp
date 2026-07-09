@@ -37,6 +37,9 @@ public class HomePage {
 
     @FindBy(css = "ul.list li.inactive a")
     private List<WebElement> categoryLinks;
+    
+    @FindBy(css = "div[id='nivo-slider']")
+    private WebElement homepagePhotho;
 
     // ---- CONSTRUCTOR ----
     public HomePage(WebDriver driver) {
@@ -87,5 +90,8 @@ public class HomePage {
         boolean loggedOut = waitUtils.waitForElementVisible(loginLink).isDisplayed();
         logger.info("User logged out status: {}", loggedOut);
         return loggedOut;
+    }
+    public boolean isHomepagephothoVisible() {
+    	return waitUtils.waitForElementVisible(homepagePhotho).isDisplayed();
     }
 }

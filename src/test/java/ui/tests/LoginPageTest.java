@@ -16,12 +16,8 @@ public class LoginPageTest extends Basepage {
 
     private static final Logger logger = LogManager.getLogger(LoginPageTest.class);
 
-    @Test(enabled=false,
-        dataProvider = "loginData",
-        dataProviderClass = DataP.class,
-        groups = {"Sanity", "Regression"},
-        retryAnalyzer = RetryAnalyzer.class
-    )
+    @Test(enabled = true, dataProvider = "loginData", dataProviderClass = DataP.class, groups = { "Sanity",
+            "Regression" }, retryAnalyzer = RetryAnalyzer.class)
     public void testValidLogin(String email, String password) {
         logger.info("Starting test: testValidLogin with email: {}", email);
 
@@ -46,52 +42,18 @@ public class LoginPageTest extends Basepage {
 
         logger.info("Test completed: testValidLogin");
     }
-    @Test(dataProvider="InvalidLogin", 
-    		dataProviderClass=DataP.class,
-    		retryAnalyzer = RetryAnalyzer.class)
-   public void testInvalidLogin(String email , String password) {
-    	 HomePage home = new HomePage(DriverManager.getDriver());
-         LoginPage loginPage = new LoginPage(DriverManager.getDriver());
-         logger.info("Navigating to Login page");
-         home.clickLogin();
-         loginPage.login(email, password);
-         logger.info("login with invalid credentials");
-         Assert.assertTrue(loginPage.IsLoginFailed(), "testfailed");
-         logger.info("user cannot login with invalid credentials");
-         logger.info("Test completed: testInvalidLogin");
-   }
-    
-    
-    
-    
-    
-    
-    
-    
-}
 
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	
+    @Test(dataProvider = "InvalidLogin", dataProviderClass = DataP.class, retryAnalyzer = RetryAnalyzer.class)
+    public void testInvalidLogin(String email, String password) {
+        HomePage home = new HomePage(DriverManager.getDriver());
+        LoginPage loginPage = new LoginPage(DriverManager.getDriver());
+        logger.info("Navigating to Login page");
+        home.clickLogin();
+        loginPage.login(email, password);
+        logger.info("login with invalid credentials");
+        Assert.assertTrue(loginPage.IsLoginFailed(), "testfailed");
+        logger.info("user cannot login with invalid credentials");
+        logger.info("Test completed: testInvalidLogin");
+    }
+
+}
