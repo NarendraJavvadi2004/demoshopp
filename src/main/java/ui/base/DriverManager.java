@@ -8,14 +8,17 @@ import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import ui.enums.BrowserType;
 
 public class DriverManager {
 
     private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
+    // Get Driver
     public static WebDriver getDriver() {
+        if (driver.get() == null) {
+            throw new IllegalStateException("Driver not initialized. Call initDriver()");
+        }
         return driver.get();
     }
 
@@ -23,6 +26,7 @@ public class DriverManager {
         driver.set(webDriver);
     }
 
+    // Initialize Driver
     public static void initDriver(String browser) {
 
         WebDriver webDriver;
@@ -36,61 +40,49 @@ public class DriverManager {
 
         switch (browserType) {
 
+            // ================= CHROME =================
             case CHROME:
-                WebDriverManager.chromedriver().setup();
 
                 ChromeOptions chromeOptions = new ChromeOptions();
-
-                // 🔥 SSL Handling
                 chromeOptions.setAcceptInsecureCerts(true);
-                chromeOptions.addArguments("--ignore-certificate-errors");
-                chromeOptions.addArguments("--allow-insecure-localhost");
-
-                // Headless Support
                 chromeOptions.addArguments("--headless=new");
-                chromeOptions.addArguments("--disable-gpu");
                 chromeOptions.addArguments("--window-size=1920,1080");
 
                 webDriver = new ChromeDriver(chromeOptions);
                 break;
 
-
+            // ================= FIREFOX =================
             case FIREFOX:
-                WebDriverManager.firefoxdriver().setup();
 
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
                 firefoxOptions.setAcceptInsecureCerts(true);
-                firefoxOptions.addArguments("--headless");
-                firefoxOptions.addArguments("--width=1920");
-                firefoxOptions.addArguments("--height=1080");
-
+                firefoxOptions.addArguments("-headless");
                 webDriver = new FirefoxDriver(firefoxOptions);
                 break;
 
-
+            // ================= EDGE =================
             case EDGE:
-                WebDriverManager.edgedriver().setup();
 
                 EdgeOptions edgeOptions = new EdgeOptions();
                 edgeOptions.setAcceptInsecureCerts(true);
                 edgeOptions.addArguments("--headless=new");
-                edgeOptions.addArguments("--disable-gpu");
                 edgeOptions.addArguments("--window-size=1920,1080");
 
                 webDriver = new EdgeDriver(edgeOptions);
                 break;
 
-
             default:
                 throw new IllegalStateException("Unexpected browser: " + browserType);
         }
 
+        webDriver.manage().window().maximize();
         setDriver(webDriver);
     }
 
+    // Quit Driver
     public static void quitDriver() {
-        if (getDriver() != null) {
-            getDriver().quit();
+        if (driver.get() != null) {
+            driver.get().quit();
             driver.remove();
         }
     }

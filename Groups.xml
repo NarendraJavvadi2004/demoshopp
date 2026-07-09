@@ -2,7 +2,7 @@
 <suite name="SmokeSanitySuite">
 
     <listeners>
-        <listener class-name="uiApi.utilities.Listenerr"/>
+        <listener class-name="uiAp+i.utilities.Listenerr"/>
     </listeners>
 
     <test name="SmokeTests">
