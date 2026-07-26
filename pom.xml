@@ -168,6 +168,7 @@
                 <configuration>
                     <suiteXmlFiles>
                         <suiteXmlFile>Regression.xml</suiteXmlFile>
+                         <suiteXmlFile>Api.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
