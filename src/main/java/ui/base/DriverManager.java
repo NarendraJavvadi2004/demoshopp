@@ -12,7 +12,7 @@ import ui.enums.BrowserType;
 
 public class DriverManager {
 
-    private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+    private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
     // Get Driver
     public static WebDriver getDriver() {
@@ -29,7 +29,6 @@ public class DriverManager {
     // Initialize Driver
     public static void initDriver(String browser) {
 
-        WebDriver webDriver;
         BrowserType browserType;
 
         try {
@@ -37,6 +36,8 @@ public class DriverManager {
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException("Unsupported browser: " + browser);
         }
+
+        WebDriver webDriver;
 
         switch (browserType) {
 
@@ -47,6 +48,9 @@ public class DriverManager {
                 chromeOptions.setAcceptInsecureCerts(true);
                 chromeOptions.addArguments("--headless=new");
                 chromeOptions.addArguments("--window-size=1920,1080");
+                chromeOptions.addArguments("--no-sandbox");
+                chromeOptions.addArguments("--disable-dev-shm-usage");
+                chromeOptions.addArguments("--remote-allow-origins=*");
 
                 webDriver = new ChromeDriver(chromeOptions);
                 break;
@@ -57,6 +61,7 @@ public class DriverManager {
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
                 firefoxOptions.setAcceptInsecureCerts(true);
                 firefoxOptions.addArguments("-headless");
+
                 webDriver = new FirefoxDriver(firefoxOptions);
                 break;
 
@@ -67,6 +72,8 @@ public class DriverManager {
                 edgeOptions.setAcceptInsecureCerts(true);
                 edgeOptions.addArguments("--headless=new");
                 edgeOptions.addArguments("--window-size=1920,1080");
+                edgeOptions.addArguments("--no-sandbox");
+                edgeOptions.addArguments("--disable-dev-shm-usage");
 
                 webDriver = new EdgeDriver(edgeOptions);
                 break;
@@ -75,7 +82,7 @@ public class DriverManager {
                 throw new IllegalStateException("Unexpected browser: " + browserType);
         }
 
-        webDriver.manage().window().maximize();
+        // Don't maximize in headless mode.
         setDriver(webDriver);
     }
 
