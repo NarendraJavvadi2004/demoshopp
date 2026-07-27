@@ -26,22 +26,21 @@ jobs:
           java-version: '21'
           cache: maven
 
-      - name: Install Google Chrome
+      - name: Verify Installed Browsers
         run: |
-          sudo apt-get update
-          sudo apt-get install -y google-chrome-stable
+          echo "===== Chrome ====="
+          google-chrome --version || true
 
-      - name: Install Firefox
-        run: |
-          sudo apt-get install -y firefox
+          echo "===== Firefox ====="
+          firefox --version || true
 
-      - name: Install Microsoft Edge
-        run: |
-          curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-          sudo install -o root -g root -m 644 microsoft.gpg /usr/share/keyrings/
-          sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge.list'
-          sudo apt-get update
-          sudo apt-get install -y microsoft-edge-stable
+          echo "===== Edge ====="
+          microsoft-edge --version || true
+
+          echo "===== Browser Paths ====="
+          which google-chrome || true
+          which firefox || true
+          which microsoft-edge || true
 
       - name: Build Project
         run: mvn clean install -DskipTests
