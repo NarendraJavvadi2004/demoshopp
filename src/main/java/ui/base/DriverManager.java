@@ -67,7 +67,6 @@ public class DriverManager {
 
             // ================= EDGE =================
             case EDGE:
-
                 EdgeOptions edgeOptions = new EdgeOptions();
                 edgeOptions.setAcceptInsecureCerts(true);
                 edgeOptions.addArguments("--headless=new");
@@ -76,6 +75,7 @@ public class DriverManager {
                 edgeOptions.addArguments("--disable-dev-shm-usage");
 
                 webDriver = new EdgeDriver(edgeOptions);
+             
                 break;
 
             default:

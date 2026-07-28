@@ -11,7 +11,8 @@ public class Basepage {
 
     public WaitUtils waitUtils;  // utility for explicit waits
     private static final Logger logger = LogManager.getLogger(Basepage.class);
-
+    public  String email;
+    public String password;
     // Runs before each test method
     @BeforeMethod(alwaysRun = true)
     @Parameters("browser")
@@ -19,9 +20,28 @@ public class Basepage {
         logger.info("Setting up driver for: {}", browser);
         DriverManager.initDriver(browser);
         logger.info("Driver initialized: {}", DriverManager.getDriver());
-        String url = ConfigReader.getProperty("ui.url");
-        DriverManager.getDriver().get(url);
-        logger.info("Navigated to URL: {}", url);
+        
+        switch(browser) {
+        
+        case  "chrome" :   email=ConfigReader.getProperty("chrome_username");
+                           password=ConfigReader.getProperty("chrome_password");
+                           logger.info("Credentials loaded for Browser:{}",browser);
+        break;
+        	
+        case  "firefox" : email=ConfigReader.getProperty("firefox_username");
+                          password=ConfigReader.getProperty("firefox_password");
+                          logger.info("Credentials loaded for Browser:{}",browser);
+        break;
+        case  "edge" : email=ConfigReader.getProperty("edge_username");
+                       password=ConfigReader.getProperty("edge_password");
+                       logger.info("Credentials loaded for Browser:{}",browser);
+        break;
+        default :
+        	throw new RuntimeException("invalid Browser");
+        
+        }
+        DriverManager.getDriver().get(ConfigReader.getProperty("ui.url"));
+        logger.info("Navigated to URL: {}",ConfigReader.getProperty("ui.url") );
         waitUtils = new WaitUtils(DriverManager.getDriver());
     }
 

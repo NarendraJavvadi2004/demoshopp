@@ -1,4 +1,4 @@
-<suite name="OrderFlowSuite">
+<suite name="OrderFlowSuite" thread-count="3" parallel="tests">
 
   <listeners>
     <listener class-name="uiApi.utilities.Listenerr"/>
@@ -32,9 +32,6 @@
       <class name="ui.tests.CheckoutPageTest"/>
      
     </classes>`
-    
-    
-    
   </test>
 
   <test name="EdgeFlow">

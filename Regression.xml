@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="Suite" thread-count="3" parallel="classes" >
-  <parameter name="browser" value="chrome"/>
+  <parameter name="browser" value="edge"/>
   <listeners>
     <listener class-name="uiApi.utilities.Listenerr"/>
   </listeners>
   <test name="userflow">
-    <classes>>
+    <classes>
       <class name="ui.tests.HomePageTest"/>
        <class name="ui.tests.RegisterTest"/>
       <class name="ui.tests.LoginPageTest"/> 
@@ -14,6 +14,7 @@
       <class name="ui.tests.ProductPageTest"/>
       <class name="ui.tests.CartPageTest"/>
       <class name="ui.tests.CheckoutPageTest"/>
+
     </classes>
 </test>
 </suite>

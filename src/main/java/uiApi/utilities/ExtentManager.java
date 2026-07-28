@@ -41,7 +41,7 @@ public class ExtentManager {
         extent.setSystemInfo("OS", System.getProperty("os.name"));
         extent.setSystemInfo("OS Version", System.getProperty("os.version"));
         extent.setSystemInfo("Java Version", System.getProperty("java.version"));
-        extent.setSystemInfo("Url", ConfigReader.getProperty("url"));
+        extent.setSystemInfo("Url", ConfigReader.getProperty("ui.url"));
 
         return extent;
     }

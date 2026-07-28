@@ -26,11 +26,10 @@ public class AuthenticatedBasePage extends Basepage {
             logger.info("User is logged out. Navigating to Login page");
             home.clickLogin();
 
-            String username = ConfigReader.getProperty("ui.username");
-            logger.info("Logging in with configured username: {}", username);
-            loginPage.login(username, ConfigReader.getProperty("ui.password"));
+            logger.info("Logging in with configured username: {}", email);
+            loginPage.login(email, password);
 
-            logger.info("Login completed successfully for user: {}", username);
+            logger.info("Login completed successfully for user: {}", email);
         } else {
             logger.info("User is already logged in. Skipping login step");
         }

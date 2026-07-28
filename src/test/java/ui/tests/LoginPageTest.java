@@ -55,5 +55,5 @@ public class LoginPageTest extends Basepage {
         logger.info("user cannot login with invalid credentials");
         logger.info("Test completed: testInvalidLogin");
     }
-
+    
 }
