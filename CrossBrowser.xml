@@ -1,4 +1,4 @@
-<suite name="OrderFlowSuite" thread-count="3" parallel="tests">
+<suite name="OrderFlowSuite">
 
   <listeners>
     <listener class-name="uiApi.utilities.Listenerr"/>
