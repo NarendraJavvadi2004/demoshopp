@@ -4,7 +4,7 @@
     <listener class-name="uiApi.utilities.Listenerr"/>
   </listeners>
 
-  <test name="ChromeFlow">
+  <test name="ChromeFlow" thread-count="3" parallel="classes">
     <parameter name="browser" value="chrome"/>
     <classes>
     <class name="ui.tests.HomePageTest"/>

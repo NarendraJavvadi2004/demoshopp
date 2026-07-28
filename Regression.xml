@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite name="Suite" thread-count="3" parallel="classes" >
-  <parameter name="browser" value="edge"/>
+<suite name="Suite" thread-count="8" parallel="classes" >
+  <parameter name="browser" value="chrome"/>
   <listeners>
     <listener class-name="uiApi.utilities.Listenerr"/>
   </listeners>
