@@ -7,7 +7,14 @@
   <test name="ChromeFlow">
     <parameter name="browser" value="chrome"/>
     <classes>
-      <class name="ui.tests.HomePageTest"/>
+    <class name="ui.tests.HomePageTest"/>
+       <class name="ui.tests.RegisterTest"/>
+      <class name="ui.tests.LoginPageTest"/> 
+      <class name="ui.tests.CategoryPageTest"/>
+      <class name="ui.tests.ProductListPageTest"/>
+      <class name="ui.tests.ProductPageTest"/>
+      <class name="ui.tests.CartPageTest"/>
+      <class name="ui.tests.CheckoutPageTest"/>
        
     </classes>
   </test>
@@ -16,6 +23,13 @@
     <parameter name="browser" value="firefox"/>
     <classes>
       <class name="ui.tests.HomePageTest"/>
+       <class name="ui.tests.RegisterTest"/>
+      <class name="ui.tests.LoginPageTest"/> 
+      <class name="ui.tests.CategoryPageTest"/>
+      <class name="ui.tests.ProductListPageTest"/>
+      <class name="ui.tests.ProductPageTest"/>
+      <class name="ui.tests.CartPageTest"/>
+      <class name="ui.tests.CheckoutPageTest"/>
      
     </classes>`
     
@@ -26,7 +40,14 @@
   <test name="EdgeFlow">
     <parameter name="browser" value="edge"/>
     <classes>
-      <class name="ui.tests.HomePageTest"/> 
+     <class name="ui.tests.HomePageTest"/>
+       <class name="ui.tests.RegisterTest"/>
+      <class name="ui.tests.LoginPageTest"/> 
+      <class name="ui.tests.CategoryPageTest"/>
+      <class name="ui.tests.ProductListPageTest"/>
+      <class name="ui.tests.ProductPageTest"/>
+      <class name="ui.tests.CartPageTest"/>
+      <class name="ui.tests.CheckoutPageTest"/>
     </classes>
   </test>
 
