@@ -32,8 +32,8 @@ public class Basepage {
                           password=ConfigReader.getProperty("firefox_password");
                           logger.info("Credentials loaded for Browser:{}",browser);
         break;
-        case  "edge" : email=ConfigReader.getProperty("edge_username");
-                       password=ConfigReader.getProperty("edge_password");
+        case  "edge" : email=ConfigReader.getProperty("chrome_username");
+                       password=ConfigReader.getProperty("chrome_password");
                        logger.info("Credentials loaded for Browser:{}",browser);
         break;
         default :
