@@ -167,7 +167,7 @@
                 <version>3.2.5</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>CrossBrowser.xml</suiteXmlFile>
+                        <suiteXmlFile>Regression.xml</suiteXmlFile>
                          
                     </suiteXmlFiles>
                 </configuration>
